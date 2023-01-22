@@ -18,6 +18,14 @@ module FUKUQ
         routing_specs: false
     end
 
+    # config/application.rb
+
+    # デフォルトのロケールを:en以外に変更する
+    config.i18n.default_locale = :ja
+
+    # I18nライブラリに訳文の探索場所を指示する
+    config.i18n.load_path += Dir[Rails.root.join('config/locales/**/*.yml').to_s]
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
