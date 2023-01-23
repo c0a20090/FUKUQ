@@ -1,7 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let(:user) { User.new(name: 'Example User', email: 'user@example.com', password: 'foobar', password_confirmation: 'foobar') }
+  let(:user) { User.new(name: 'Example User',
+    email: 'user@example.com',
+    password: 'foobar',
+    password_confirmation: 'foobar') }
 
   it 'userが有効であること' do
     expect(user).to be_valid
@@ -74,5 +77,11 @@ RSpec.describe User, type: :model do
   it 'パスワードは32文字以内であること' do
     user.password = user.password_confirmation = "a" * 33
     expect(user).to_not be_valid
+  end
+
+  describe '#authenticated?' do
+    it 'digestがnilならfalseを返すこと' do
+      expect(user.authenticated?('')).to be_falsy
+    end
   end
 end
