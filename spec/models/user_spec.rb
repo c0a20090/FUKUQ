@@ -17,8 +17,13 @@ RSpec.describe User, type: :model do
     expect(user).to_not be_valid
   end
 
-  it 'nameは50文字以内であること' do
-    user.name = 'a' * 51
+  it 'nameは3文字以上であること' do
+    user.name = 'a' * 2
+    expect(user).to_not be_valid
+  end
+
+  it 'nameは15文字以内であること' do
+    user.name = 'a' * 16
     expect(user).to_not be_valid
   end
 
@@ -63,6 +68,11 @@ RSpec.describe User, type: :model do
 
   it 'パスワードは6文字以上であること' do
     user.password = user.password_confirmation = "a" * 5
+    expect(user).to_not be_valid
+  end
+
+  it 'パスワードは32文字以内であること' do
+    user.password = user.password_confirmation = "a" * 33
     expect(user).to_not be_valid
   end
 end

@@ -6,13 +6,13 @@
     <%= form_with(model: @user) do |f| %>
     <%= render 'shared/error_messages' %>
       <%= f.label :name, 'ユーザーネーム' %>
-      <%= f.text_field :name, placeholder: "ユーザーネーム(1～50文字以内)", class: 'form-control'%>
+      <%= f.text_field :name, placeholder: "ユーザーネーム(3～15文字以内)", class: 'form-control'%>
 
       <%= f.label :email, 'メールアドレス' %>
-      <%= f.email_field :email, placeholder: "メールアドレス", class: 'form-control'%>
+      <%= f.email_field :email, placeholder: "メールアドレス(255文字以内)", class: 'form-control'%>
 
       <%= f.label :password, 'パスワード' %>
-      <%= f.password_field :password, placeholder: "パスワード(半角英数記号6文字以上)", class: 'form-control'%>
+      <%= f.password_field :password, placeholder: "パスワード(半角英数記号6～32文字以内)", class: 'form-control'%>
 
       <%= f.label :password_confirmation, "パスワード確認" %>
       <%= f.password_field :password_confirmation, placeholder: "パスワード確認", class: 'form-control'%>
