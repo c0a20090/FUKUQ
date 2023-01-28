@@ -32,9 +32,3 @@
 en:
   hello: "Hello world"
 
-ja:
-  activerecord:
-    attributes:
-      user:
-        name: 名前
-        password: パスワード

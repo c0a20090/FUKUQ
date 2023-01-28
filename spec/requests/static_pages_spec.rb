@@ -32,9 +32,9 @@ RSpec.describe 'StaticPages', type: :request do
       expect(response).to have_http_status :ok
     end
 
-    it '概要 | FUKUQが含まれること' do
+    it 'FUKUQとは | FUKUQが含まれること' do
       get about_path
-      expect(response.body).to include "概要 | #{base_title}"
+      expect(response.body).to include "FUKUQとは | #{base_title}"
     end
   end
 
