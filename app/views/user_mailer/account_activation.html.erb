@@ -1,0 +1,9 @@
+<h1>FUKUQ</h1>
+
+<p>こんにちは <%= @user.name %>様,</p>
+
+<p>
+FUKUQにご登録いただきありがとうございます。下記のリンクをクリックしてアカウントを有効化してください。
+</p>
+
+<%= link_to "アカウントを有効化する", edit_account_activation_url(@user.activation_token, email: @user.email) %>
