@@ -110,12 +110,6 @@ RSpec.describe "Users", type: :request do
       expect(response.body).to include full_title('ユーザー編集')
     end
 
-    it 'アカウント削除ボタンがあること' do
-      log_in user
-      get edit_user_path(user)
-      expect(response.body).to include 'アカウントを削除する'
-    end
-
     it '管理者にはアカウント削除ボタンがないこと' do
       log_in admin_user
       get edit_user_path(admin_user)
@@ -244,15 +238,6 @@ RSpec.describe "Users", type: :request do
       context 'adminユーザでログインしている場合' do
         it '他のユーザーを削除できることの確認' do
           log_in admin_user
-          expect {
-            delete user_path(other_user)
-          }.to change(User, :count).by -1
-        end
-      end
-
-      context 'adminユーザ以外でログインしている場合' do
-        it 'アカウント削除できることの確認' do
-          log_in other_user
           expect {
             delete user_path(other_user)
           }.to change(User, :count).by -1

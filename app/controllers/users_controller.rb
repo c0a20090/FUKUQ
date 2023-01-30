@@ -1,8 +1,7 @@
 class UsersController < ApplicationController
   before_action :logged_in_user,        only: [:index, :edit, :update, :destroy]
   before_action :correct_user,          only: [:edit, :update]
-  # before_action :admin_or_current_user, only: :destroy
-  before_action :admin_user,            only: :index
+  before_action :admin_user,            only: [:index, :destroy]
   
   def index
     @users = User.all.order(created_at: :asc).page(params[:page])
@@ -73,11 +72,6 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       redirect_to(root_url, status: :see_other) unless current_user?(@user)
     end
-
-    # 管理者か現在ログインしているユーザーかどうか確認
-    # def admin_or_current_user
-    #   redirect_to(root_url, status: :see_other) unless !current_user?(@user)
-    # end
 
     # 管理者かどうか確認
     def admin_user
