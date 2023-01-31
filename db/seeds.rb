@@ -1,6 +1,6 @@
 # メインのサンプルユーザーを1人作成する
 User.create!(name:  "masaya",
-  email: "masakin@masakin.com",
+  email: "c0a200908d@edu.teu.ac.jp",
   password:              "1234567",
   password_confirmation: "1234567",
   admin:     true,
