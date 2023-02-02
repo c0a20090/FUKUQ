@@ -34,6 +34,29 @@ RSpec.describe "Questions", type: :system do
     end
   end
 
+  describe 'Questions#show' do
+    before do
+      FactoryBot.send(:user_with_questions, questions_count: 35)
+      @user = Question.first.user
+      @user.password = 'password'
+      log_in @user
+      visit new_question_path
+    end
+
+    it '画像添付ができること' do
+      expect {
+        fill_in 'question_title', with: 'This question is true'
+        fill_in 'question_content', with: 'This question really ties the room together'
+        attach_file 'question[image]', "#{Rails.root}/spec/factories/kitten.jpg"
+        click_button '投稿する'
+      }.to change(Question, :count).by 1
+     
+      attached_question = Question.first
+      visit question_path(attached_question)
+      expect(attached_question.image).to be_attached
+    end
+  end
+
   describe 'Questions#new' do
     before do
       FactoryBot.send(:user_with_questions, questions_count: 35)

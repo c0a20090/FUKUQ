@@ -25,7 +25,9 @@
             </a>
             <ul id="dropdown-menu" class="dropdown-menu">
               <li><%= link_to "プロフィール", current_user %></li>
-              <li><%= link_to "設定", edit_user_path(current_user) %></li>
+              <% unless current_user.email == 'guest@example.com' %>
+                <li><%= link_to "設定", edit_user_path(current_user) %></li>
+              <% end %>
               <li class="divider"></li>
               <li>
                 <%= link_to "ログアウト", logout_path,
@@ -34,7 +36,7 @@
             </ul>
         </li>
         <% else %>
-          <li><%= link_to "ゲストログイン", '#' %></li>
+          <li><%= link_to "ゲストログイン", guest_login_path, data: { turbo_method: :post } %></li>
           <li><%= link_to "ログイン", login_path %></li>
           <li><%= link_to "新規登録", signup_path %></li>
         <% end %>

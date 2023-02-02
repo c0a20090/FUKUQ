@@ -18,6 +18,15 @@ FactoryBot.define do
     activated_at { Time.zone.now }
   end
 
+  factory :guest_user, class: User do
+    name { 'ゲストユーザー' }
+    email { 'guest@example.com' }
+    password { 'password' }
+    password_confirmation { 'password' }
+    activated { true }
+    activated_at { Time.zone.now }
+  end
+
   factory :continuous_users, class: User do
     sequence(:name) { |n| "User #{n}" }
     sequence(:email) { |n| "user-#{n}@example.com" }
