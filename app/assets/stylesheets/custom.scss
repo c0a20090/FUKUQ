@@ -307,3 +307,13 @@ span.image {
   font-size: 180%;
   font-weight: bold;
 }
+
+/* ユーザー検索フォーム  */
+
+.search_form {
+  overflow: auto;
+  margin: 10px;
+  .input-group {
+    width: 305px;
+  }
+}

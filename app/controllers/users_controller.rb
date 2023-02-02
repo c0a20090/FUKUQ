@@ -5,6 +5,12 @@ class UsersController < ApplicationController
   
   def index
     @users = User.all.order(created_at: :asc).page(params[:page])
+    if params[:q] && params[:q].reject { |key, value| value.blank? }.present?
+      @q = User.ransack(search_params, activated: true)
+    else
+      @q = User.ransack(activated: true)
+    end
+    @users = @q.result.page(params[:page])
   end
 
   def show
@@ -68,5 +74,9 @@ class UsersController < ApplicationController
     # 管理者かどうか確認
     def admin_user
       redirect_to(root_url, status: :see_other) unless current_user.admin?
+    end
+
+    def search_params
+      params.require(:q).permit(:name_cont)
     end
 end
