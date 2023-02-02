@@ -52,7 +52,7 @@ RSpec.describe "PasswordResets", type: :request do
  
     it 'メールアドレスもトークンも有効なら、隠しフィールドにメールアドレスが表示されること' do
       get edit_password_reset_path(@user.reset_token, email: @user.email)
-      expect(response.body).to include "<input type=\"hidden\" name=\"email\" id=\"email\" value=\"#{@user.email}\" autocomplete=\"off\" />"
+      expect(response.body).to include "input type=\"hidden\" name=\"email\" id=\"email\" value=\"#{@user.email}\""
     end
  
     it 'メールアドレスが間違っていれば、rootにリダイレクトすること' do

@@ -5,7 +5,17 @@
       <h1>
         <%= gravatar_for @user %>
         <%= @user.name %>
+        <p><small>質問数：<%= @user.questions.count %>件</small></p>
       </h1>
     </section>
   </aside>
+  <div class="col-md-8">
+    <% if @user.questions.any? %>
+      <h3>質問</h3>
+      <ol class="questions">
+        <%= render @questions %>
+      </ol>
+      <%= paginate @questions, theme: 'twitter-bootstrap-4' %>
+    <% end %>
+  </div>
 </div>

@@ -1,0 +1,17 @@
+<% provide(:title, "質問一覧") %>
+<h1>質問一覧</h1>
+
+<%= paginate @questions, theme: 'twitter-bootstrap-4' %>
+
+<ul class="questions">
+  <% @questions.each do |question| %>
+    <li>
+      <%= link_to gravatar_for(question.user, size: 50), question.user %>
+      <span class="user"><%= link_to question.user.name, question.user %></span>
+      <span class="title"><%= link_to question.title, question %></span>
+      <span class="timestamp"><%= time_ago_in_words(question.created_at) %>前</span>
+    </li>
+  <% end %>
+</ul>
+
+<%= paginate @questions, theme: 'twitter-bootstrap-4' %>

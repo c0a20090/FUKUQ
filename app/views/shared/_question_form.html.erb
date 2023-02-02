@@ -1,0 +1,14 @@
+<%= form_with(model: @question) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+    <%= f.label :title, 'タイトル' %>
+    <%= f.text_field :title, placeholder: "質問タイトル(25文字以内)", class: 'form-control' %>
+
+    <%= f.label :content, '質問内容' %>
+    <%= f.text_area :content, placeholder: "質問内容を入力してください(1000文字以内)", class: 'form-control', rows: '10' %>
+  </div>
+  <%= f.submit "投稿する", class: "btn btn-primary" %>
+  <span class="image">
+    <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
+  </span>
+<% end %>

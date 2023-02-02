@@ -1,0 +1,12 @@
+<% provide(:title, @question.title) %>
+<div class="row">
+  <aside class="col-md-6 col-md-offset-3">
+    <p class='tit'><%= @question.title %></p>
+    <p><small><%= @question.created_at.to_s(:datetime_jp) %></small></p>
+    <% if @question.image.attached? %>
+      <p><%= image_tag @question.image.variant(:display) %></p>
+    <% end %>
+    <p><%= @question.content %></p>
+    <p><%= link_to @question.user.name, @question.user %></p>
+  </aside>
+</div>
