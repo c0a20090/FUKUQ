@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="search_form">
+    <%= search_form_for @q, url: @url do |f| %>
+      <div class="input-group col-md-6">
+        <%= f.search_field :title_cont, placeholder: "キーワードで質問を探す", class: 'form-control' %>
+        <span class="input-group-btn">
+          <%= f.submit '検索する', class: "btn btn-primary" %>
+        </span>
+      </div>
+    <% end %>
+  </div>
+</div>
