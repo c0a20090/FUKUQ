@@ -1,12 +1,33 @@
 <% provide(:title, @question.title) %>
 <div class="row">
-  <aside class="col-md-6 col-md-offset-3">
+  <aside class="col-md-4">
     <p class='tit'><%= @question.title %></p>
     <p><small><%= @question.created_at.to_s(:datetime_jp) %></small></p>
     <% if @question.image.attached? %>
       <p><%= image_tag @question.image.variant(:display) %></p>
     <% end %>
     <p><%= @question.content %></p>
-    <p><%= link_to @question.user.name, @question.user %></p>
+    <p>質問者：<%= link_to @question.user.name, @question.user %></p>
   </aside>
+</div>
+<div>
+  <% unless @question.user == current_user %>
+    <%= form_with(model: [@question, @answer], local: true) do |f| %>
+      <div>
+        <%= f.label :content, "回答" %><br>
+        <%= f.text_area :content, placeholder: "回答内容を入力してください(1000文字以内)", class: 'form-control', rows: '5' %>
+      </div>
+      <%= f.submit "回答する", class: "btn btn-primary" %>
+    <% end %>
+  <% end %>
+</div>
+<hr>
+<h3>みんなの回答</h2>
+<hr>
+<div>
+  <% @question.answers.each do |answer| %>
+    <p><%= answer.content %></p>
+    <p>回答者：<%= link_to answer.user.name, answer.user %></p>
+    <hr>
+  <% end %>
 </div>

@@ -8,6 +8,7 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
+    @answer = Answer.new
   end
 
   def new
@@ -18,7 +19,7 @@ class QuestionsController < ApplicationController
     @question = current_user.questions.build(question_params)
     @question.image.attach(params[:question][:image])
     if @question.save
-      flash[:success] = "質問が投稿できました。"
+      flash[:success] = "質問を投稿しました"
       redirect_to questions_path
     else
       render 'questions/new', status: :unprocessable_entity

@@ -11,6 +11,12 @@ FactoryBot.define do
     created_at { Time.zone.now }
     user { association :user, email: 'recent@example.com' }
   end
+
+  factory :question, class: Question do
+    title {' タイトルです '}
+    content { '内容です' }
+    user { association :user }
+  end
 end
  
 def user_with_questions(questions_count: 5)
