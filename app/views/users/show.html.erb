@@ -11,6 +11,7 @@
   </aside>
   <div class="col-md-8">
     <% if @user.questions.any? %>
+      <%= render 'shared/questions_search' %>
       <h3>質問</h3>
       <ol class="questions">
         <%= render @questions %>

@@ -16,6 +16,14 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @questions = @user.questions.page(params[:page])
+    if params[:q] && params[:q].reject { |key, value| value.blank? }.present?
+      @q = @user.questions.ransack(questions_search_params)
+      @questions = @q.result.page(params[:page])
+    else
+      @q = Question.ransack
+      @questions = @user.questions.page(params[:page])
+    end
+    @url = user_path(@user)
   end
   
   def new
