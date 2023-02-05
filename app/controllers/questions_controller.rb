@@ -3,7 +3,8 @@ class QuestionsController < ApplicationController
   before_action :correct_user,   only: :destroy
 
   def index
-    @questions = Question.all.page(params[:page])
+    @tags = Tag.all
+    @questions = params[:name].present? ? Tag.find(params[:name]).questions.page(params[:page]) : Question.all.page(params[:page])
   end
 
   def show
@@ -48,5 +49,9 @@ class QuestionsController < ApplicationController
     def correct_user
       @question = current_user.questions.find_by(id: params[:id])
       redirect_to questions_url, status: :see_other if @question.nil?
+    end
+
+    def question_params
+      params.require(:question).permit(:title, :content, tag_ids: [])
     end
 end

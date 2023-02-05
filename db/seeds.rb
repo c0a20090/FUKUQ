@@ -20,10 +20,22 @@ User.create!(name:  "masaya",
                activated_at: Time.zone.now)
 end
 
-# ユーザーの一部を対象にマイクロポストを生成する
+# ユーザーの一部を対象に質問を生成する
 users = User.order(:created_at).take(6)
 50.times do
   title = Faker::Lorem.sentence(word_count: 5)
   content = Faker::Lorem.sentence(word_count: 10)
   users.each { |user| user.questions.create!(title: title, content: content) }
 end
+
+# タグ生成
+Tag.create([
+  { name: 'トップス' },
+  { name: 'アウター' },
+  { name: 'パンツ'},
+  { name: 'バッグ'},
+  { name: 'シューズ'},
+  { name: '帽子'},
+  { name: 'アクセサリー'},
+  { name: 'その他'},
+  ])

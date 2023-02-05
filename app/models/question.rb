@@ -1,9 +1,11 @@
 class Question < ApplicationRecord
   has_many :answers, dependent: :destroy
+  has_many :question_tags, dependent: :destroy
+  has_many :tags, through: :question_tags, dependent: :destroy
   belongs_to :user
   has_one_attached :image
   has_one_attached :image do |attachable|
-    attachable.variant :display, resize_to_limit: [500, 500]
+    attachable.variant :display, resize_to_limit: [400, 400]
   end
   default_scope -> { order(created_at: :desc) }
   validates :user_id, presence: true

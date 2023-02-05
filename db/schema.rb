@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_04_062114) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_05_075333) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -49,6 +49,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_04_062114) do
     t.index ["user_id"], name: "index_answers_on_user_id"
   end
 
+  create_table "question_tags", force: :cascade do |t|
+    t.integer "question_id", null: false
+    t.integer "tag_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question_id"], name: "index_question_tags_on_question_id"
+    t.index ["tag_id"], name: "index_question_tags_on_tag_id"
+  end
+
   create_table "questions", force: :cascade do |t|
     t.string "title"
     t.text "content"
@@ -57,6 +66,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_04_062114) do
     t.datetime "updated_at", null: false
     t.index ["user_id", "created_at"], name: "index_questions_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_questions_on_user_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -79,5 +94,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_04_062114) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "answers", "questions"
   add_foreign_key "answers", "users"
+  add_foreign_key "question_tags", "questions"
+  add_foreign_key "question_tags", "tags"
   add_foreign_key "questions", "users"
 end

@@ -323,3 +323,44 @@ h3 {
   font-size: 25px;
   font-weight: bold;
 }
+
+/* タグ */
+.tag-box{
+  border: solid 2px gray;
+  padding-top: 2em;
+  padding-bottom: 2em;
+  width: 100px;
+  border-radius: 30px;
+  margin: 0.5em 1em;
+  position: relative;
+
+  a{
+    text-decoration: none;
+    padding-top: 1em;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    text-align: center;
+    position: absolute;
+  }
+}
+
+.tag-box-around{
+  margin: 4em 0em;
+  display: flex;
+}
+
+.tag-select1{
+  margin-top: 2em;
+}
+
+.tag-select2{
+  padding: 0.5em 0em;
+  margin-bottom: 2em;
+  margin-top: 0.1em;
+  font-weight: bold;
+  border: solid 1px gainsboro;
+  border-radius: 10px;
+}
+

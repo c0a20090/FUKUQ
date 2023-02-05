@@ -7,6 +7,14 @@
     <%= f.label :content, '質問内容' %>
     <%= f.text_area :content, placeholder: "質問内容を入力してください(1000文字以内)", class: 'form-control', rows: '10' %>
   </div>
+  <%= f.label :tag_ids, 'タグ選択', class: 'tag-select1'%>
+  <div class="checkbox tag-select2">
+    <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+      <div class='form-check'>
+        <%= tag.label {tag.check_box + tag.text} %> 
+      </div>
+    <% end %>
+  </div>
   <%= f.submit "投稿する", class: "btn btn-primary" %>
   <span class="image">
     <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
