@@ -2,12 +2,12 @@
 <div class="row">
   <aside class="col-md-4">
     <p class='tit'><%= @question.title %></p>
-    <p><small><%= @question.created_at.to_s(:datetime_jp) %></small></p>
     <% if @question.image.attached? %>
       <p><%= image_tag @question.image.variant(:display) %></p>
     <% end %>
     <p><%= @question.content %></p>
     <p>質問者：<%= link_to @question.user.name, @question.user %></p>
+    <p><small><%= @question.created_at.to_s(:datetime_jp) %></small></p>
   </aside>
 </div>
 <div>
@@ -25,9 +25,10 @@
 <h3>みんなの回答</h2>
 <hr>
 <div>
-  <% @question.answers.each do |answer| %>
+  <% @question.answers.order(created_at: "DESC").each do |answer| %>
     <p><%= answer.content %></p>
     <p>回答者：<%= link_to answer.user.name, answer.user %></p>
+    <p><small><%= answer.created_at.to_s(:datetime_jp) %></small></p>
     <hr>
   <% end %>
 </div>

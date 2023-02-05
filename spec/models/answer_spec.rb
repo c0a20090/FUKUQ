@@ -12,13 +12,18 @@ RSpec.describe Answer, type: :model do
     expect(answer).to_not be_valid
   end
 
+  it 'question_idがないと無効になる' do
+    answer.question_id = nil
+    expect(answer).to_not be_valid
+  end
+
   it '並び順は投稿の新しい順になっている' do
     FactoryBot.send(:question_with_answers)
-    expect(FactoryBot.create(:answer_recent)).to eq Answer.first
+    expect(FactoryBot.create(:answer_recent)).to eq Answer.last
   end
 
   it '質問が削除されたらその回答も削除される' do
-    answer = FactoryBot.create(:answer_recent)
+    answer = FactoryBot.create(:answer)
     question = answer.question
     expect {
       question.destroy
