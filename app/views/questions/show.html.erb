@@ -3,14 +3,19 @@
   <aside class="col-md-4">
     <p class='tit'><%= @question.title %></p>
     <p><small><%= @question.created_at.to_s(:datetime_jp) %></small></p>
-    <% @question.tags.each do |tag| %>
-      <p>タグ：<%= tag.name %><p>
-    <% end %>
     <% if @question.image.attached? %>
       <p><%= image_tag @question.image.variant(:display) %></p>
     <% end %>
-    <p><%= @question.content %></p>
+    <div class='q-content'>
+      <p><%= @question.content %></p>
+    </div>
     <p>質問者：<%= link_to @question.user.name, @question.user %></p>
+    <p><small>
+    タグ：
+    <% @question.tags.each do |tag| %>
+      <%= tag.name %>
+    <% end %>
+    </small></p>
   </aside>
 </div>
 <div>
