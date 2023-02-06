@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 gem "rails",                      "7.0.4"
 gem "social-share-button"
+gem "font-awesome-sass"
 gem "ransack"
 gem "image_processing",           "1.12.2"
 gem "active_storage_validations", "0.9.8"

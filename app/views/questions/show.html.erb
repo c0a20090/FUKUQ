@@ -16,7 +16,9 @@
       <%= tag.name %>
     <% end %>
     </small></p>
-    <%= social_share_button_tag(@question.title) %>
+    <%= link_to "https://twitter.com/share?url=#{ request.url }/&text= #{@question.title}", target: '_blank' do %>
+      <i class="fab fa-twitter" style='color: #3399FF;'></i>シェア
+    <% end %>
   </aside>
 </div>
 <div>
