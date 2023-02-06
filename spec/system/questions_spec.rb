@@ -121,9 +121,9 @@ RSpec.describe "Questions", type: :system do
       log_in @user
     end
 
-    it '質問数：35件と表示されること' do
+    it '質問数： 35と表示されること' do
       visit user_path(@user)
-      expect(page).to have_content '質問数：35件'
+      expect(page).to have_content '質問数： 35'
     end
 
     it 'deleteボタンが表示されていること' do

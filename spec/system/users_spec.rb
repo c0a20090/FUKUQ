@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 RSpec.describe "Users", type: :system do
   before do
     driven_by(:rack_test)
@@ -34,6 +36,19 @@ RSpec.describe "Users", type: :system do
       visit users_path
   
       expect(page).to_not have_link 'delete'
+    end
+  end
+
+  describe 'show' do
+    it 'フォローとフォロワーが表示されること' do
+    user = FactoryBot.send(:create_relationships)
+    log_in user
+    #  expect(page).to have_content '10 フォロー'
+    #  expect(page).to have_content '10 フォロワー'
+
+    visit user_path(user)
+    expect(page).to have_content '10 フォロー'
+    expect(page).to have_content '10 フォロワー'
     end
   end
  end

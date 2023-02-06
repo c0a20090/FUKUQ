@@ -4,11 +4,15 @@
     <section class="user_info">
         <%= gravatar_for @user %>
         <h1><%= @user.name %></h1>
-        <p>質問数：<%= @user.questions.count %>件</p>
-        <p>回答数：<%= @user.answers.count %>件</p>
+        <span><strong>質問数：</strong> <%= @user.questions.count %></span>
+        <span><strong>回答数：</strong> <%= @user.answers.count %></span>
     </section>
+    <section class="stats">
+        <%= render 'shared/stats' %>
+      </section>
   </aside>
   <div class="col-md-8">
+    <%= render 'follow_form' if logged_in? %>
     <% if @user.questions.any? %>
       <%= render 'shared/questions_search' %>
       <h3>質問</h3>

@@ -1,0 +1,5 @@
+<%= link_to gravatar_for(current_user, size: 70), current_user %>
+<h1><%= current_user.name %></h1>
+<span><%= link_to "プロフィールを見る", current_user %></span>
+<span><strong>質問数：</strong> <%= current_user.questions.count %></span>
+<span><strong>回答数：</strong> <%= current_user.answers.count %></span>
