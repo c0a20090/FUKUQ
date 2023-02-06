@@ -3,13 +3,22 @@ class QuestionsController < ApplicationController
   before_action :correct_user,   only: :destroy
 
   def index
-    @tags = Tag.all
+    @tags = Tag.create([
+      { name: 'トップス' },
+      { name: 'アウター' },
+      { name: 'パンツ'},
+      { name: 'バッグ'},
+      { name: 'シューズ'},
+      { name: '帽子'},
+      { name: 'アクセサリ'},
+      { name: 'その他'},
+      ])
     @questions = params[:name].present? ? Tag.find(params[:name]).questions.page(params[:page]) : Question.all.page(params[:page])
   end
 
   def show
     @question = Question.find(params[:id])
-    @answer = Answer.new
+    @answer   = Answer.new
   end
 
   def new

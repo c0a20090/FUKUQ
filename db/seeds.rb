@@ -29,16 +29,7 @@ users = User.order(:created_at).take(6)
 end
 
 # タグ生成
-Tag.create([
-  { name: 'トップス' },
-  { name: 'アウター' },
-  { name: 'パンツ'},
-  { name: 'バッグ'},
-  { name: 'シューズ'},
-  { name: '帽子'},
-  { name: 'アクセサリ'},
-  { name: 'その他'},
-  ])
+
 
 # ユーザーフォローのリレーションシップを作成する
 users = User.all
