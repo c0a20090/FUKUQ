@@ -21,12 +21,12 @@
 # end
 
 # ユーザーの一部を対象に質問を生成する
-users = User.order(:created_at).take(6)
-50.times do
-  title = Faker::Movie.title(word_count: 10)
-  content = Faker::Movie.quote(word_count: 10)
-  users.each { |user| user.questions.create!(title: title, content: content) }
-end
+# users = User.order(:created_at).take(6)
+# 50.times do
+#   title = Faker::Movie.title(word_count: 10)
+#   content = Faker::Movie.quote(word_count: 10)
+#   users.each { |user| user.questions.create!(title: title, content: content) }
+# end
 
 # タグ生成
 Tag.create([
@@ -41,9 +41,9 @@ Tag.create([
   ])
 
 # ユーザーフォローのリレーションシップを作成する
-users = User.all
-user  = users.first
-following = users[2..50]
-followers = users[3..40]
-following.each { |followed| user.follow(followed) }
-followers.each { |follower| follower.follow(user) }
+# users = User.all
+# user  = users.first
+# following = users[2..50]
+# followers = users[3..40]
+# following.each { |followed| user.follow(followed) }
+# followers.each { |follower| follower.follow(user) }
