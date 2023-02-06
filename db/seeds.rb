@@ -23,8 +23,8 @@ end
 # ユーザーの一部を対象に質問を生成する
 users = User.order(:created_at).take(6)
 50.times do
-  title = Faker::Movie.sentence(word_count: 10)
-  content = Faker::Book.sentence(word_count: 10)
+  title = Faker::Movie.title(word_count: 10)
+  content = Faker::Movie.quote(word_count: 10)
   users.each { |user| user.questions.create!(title: title, content: content) }
 end
 
