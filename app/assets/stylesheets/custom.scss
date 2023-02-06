@@ -1,5 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "social-share-button"; 
 
 /* mixins, variables, etc. */
 
@@ -408,3 +409,13 @@ h3 {
   margin: 2em 0;
 }
 
+/* snsシェアボタン */
+$size: 24px;
+
+.social-share-button {
+  .ssb-icon {
+    background-size: $size $size;
+    height: $size;
+    width: $size;
+  }
+}
