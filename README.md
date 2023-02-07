@@ -41,7 +41,7 @@ https://fukuq.onrender.com/
 | 4 |質問機能 | 無 |
 | 5 |回答機能 | 無 |
 | 6 |検索機能 | ransack |
-| 7 |フォロー機能 | Hotwire(非同期) |
+| 7 |フォロー機能 | Hotwire(SPA化) |
 | 8 |タグ機能 | 無 |
 | 9 |Twitterシェア機能 | 無 |
 | 10 |ページネーション機能 | kaminari |
