@@ -26,6 +26,11 @@ https://fukuq.onrender.com/
 
 * 気になった服のブランド名が分からない時。など
 
+## 工夫した点
+
+* 服のジャンルごとにタグ分けすることで、自分の知りたい質問や答えてほしい質問を絞り込みやすくした。
+
+
 # 実装機能一覧
 
 |  | 機能 | gem/備考  |
@@ -47,3 +52,19 @@ https://fukuq.onrender.com/
 ## 開発環境
 
 * Ruby 3.1.2・Ruby on Rails 7.0.4・Bootstrap 3.4.1・splite3 1.4.2
+
+# 使用方法
+
+```
+$ git clone https://github.com/c0a20090/FUKUQ.git
+$ cd FUKUQ/
+$ bundle install
+$ rails db:seed
+$ rails db:migrate
+$ rails s
+
+```
+
+## 利用方法
+
+一般ユーザーの方は新規登録、もしくはゲストログインをご利用ください。
