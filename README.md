@@ -58,8 +58,7 @@ https://fukuq.onrender.com/
 ```
 $ git clone https://github.com/c0a20090/FUKUQ.git
 $ cd FUKUQ/
-$ bundle install
-$ rails db:seed
+$ bundle install --without production
 $ rails db:migrate
 $ rails s
 
