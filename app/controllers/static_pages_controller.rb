@@ -2,7 +2,9 @@ class StaticPagesController < ApplicationController
   def home
     if logged_in?
       @question   = current_user.questions.build
-      @feed_items = current_user.feed.page(params[:page])
+      @q = current_user.feed.ransack(params[:q])
+      @feed_items = @q.result.page(params[:page])
+      @url = root_path
     end
   end
 
