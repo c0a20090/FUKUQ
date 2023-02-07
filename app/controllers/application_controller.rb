@@ -11,8 +11,4 @@ class ApplicationController < ActionController::Base
         redirect_to login_url, status: :see_other
       end
     end
-
-    def questions_search_params
-      params.require(:q).permit(:title_cont)
-    end
 end

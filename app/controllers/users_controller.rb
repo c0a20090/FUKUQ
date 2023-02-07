@@ -4,25 +4,14 @@ class UsersController < ApplicationController
   before_action :admin_user,            only: [:index, :destroy]
   
   def index
-    @users = User.all.order(created_at: :asc).page(params[:page])
-    if params[:q] && params[:q].reject { |key, value| value.blank? }.present?
-      @q = User.ransack(search_params, activated: true)
-    else
-      @q = User.ransack(activated: true)
-    end
+    @q = User.ransack(params[:q])
     @users = @q.result.page(params[:page])
   end
 
   def show
     @user = User.find(params[:id])
-    @questions = @user.questions.page(params[:page])
-    if params[:q] && params[:q].reject { |key, value| value.blank? }.present?
-      @q = @user.questions.ransack(questions_search_params)
-      @questions = @q.result.page(params[:page])
-    else
-      @q = Question.ransack
-      @questions = @user.questions.page(params[:page])
-    end
+    @q = @user.questions.ransack(params[:q])
+    @questions = @q.result.page(params[:page])
     @url = user_path(@user)
   end
   
@@ -96,9 +85,5 @@ class UsersController < ApplicationController
     # 管理者かどうか確認
     def admin_user
       redirect_to(root_url, status: :see_other) unless current_user.admin?
-    end
-
-    def search_params
-      params.require(:q).permit(:name_cont)
     end
 end

@@ -5,7 +5,7 @@ class QuestionsController < ApplicationController
   def index
     @tags = Tag.all
     @q = Question.ransack(params[:q])
-    @questions = params[:name].present? ? Tag.find(params[:name]).questions.page(params[:page]) : Question.all.page(params[:page])
+    @questions = params[:name].present? ? Tag.find(params[:name]).questions.page(params[:page]) : @q.result.page(params[:page])
   end
 
   def show
