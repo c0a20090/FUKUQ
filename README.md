@@ -52,7 +52,7 @@ https://fukuq.onrender.com/
 
 ## 開発環境
 
-* Ruby 3.1.2・Ruby on Rails 7.0.4・Bootstrap 3.4.1・splite3 1.4.2
+* Ruby 3.1.2・Ruby on Rails 7.0.4・Bootstrap 3.4.1・sqlite3 1.4.2
 
 * Docker+VSCode(Remote Container)
 
