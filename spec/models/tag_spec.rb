@@ -1,5 +1,9 @@
-require 'rails_helper'
+# require 'rails_helper'
 
-RSpec.describe Tag, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
-end
+# RSpec.describe Tag, type: :model do
+#   let(:tag) { FactoryBot.create(:tag) }
+
+#   it '有効であること' do
+#     expect(tag).to be_valid
+#   end
+# end

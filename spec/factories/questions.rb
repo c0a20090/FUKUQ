@@ -45,3 +45,4 @@ def user_with_questions(questions_count: 5)
     FactoryBot.create_list(:orange, questions_count, user: user)
   end
 end
+

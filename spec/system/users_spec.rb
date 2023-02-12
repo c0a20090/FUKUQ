@@ -30,6 +30,12 @@ RSpec.describe "Users", type: :system do
       visit users_path
       expect(page).to have_link '削除する'
     end
+
+    it '検索窓があること' do
+      log_in admin
+      visit users_path
+      expect(page).to have_selector '.user_search'
+    end
    
     it 'adminユーザでなければdeleteリンクが表示されないこと' do
       log_in not_admin
@@ -41,14 +47,19 @@ RSpec.describe "Users", type: :system do
 
   describe 'show' do
     it 'フォローとフォロワーが表示されること' do
-    user = FactoryBot.send(:create_relationships)
-    log_in user
-    #  expect(page).to have_content '10 フォロー'
-    #  expect(page).to have_content '10 フォロワー'
+      user = FactoryBot.send(:create_relationships)
+      log_in user
+      visit user_path(user)
+      expect(page).to have_content '10 フォロー'
+      expect(page).to have_content '10 フォロワー'
+    end
 
-    visit user_path(user)
-    expect(page).to have_content '10 フォロー'
-    expect(page).to have_content '10 フォロワー'
+    it '検索窓があること' do
+      FactoryBot.send(:user_with_questions, questions_count: 35)
+      other = Question.first.user
+      log_in other
+      visit user_path(other)
+      expect(page).to have_selector '.question_search'
     end
   end
  end

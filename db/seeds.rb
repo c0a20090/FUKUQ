@@ -1,11 +1,11 @@
-# # メインのサンプルユーザーを1人作成する
-# User.create!(name:  "masaya",
-#   email: "c0a200908d@edu.teu.ac.jp",
-#   password:              "1234567",
-#   password_confirmation: "1234567",
-#   admin:     true,
-#   activated: true,
-#   activated_at: Time.zone.now)
+# メインのサンプルユーザーを1人作成する
+User.create!(name:  "masaya",
+  email: "c0a200908d@edu.teu.ac.jp",
+  password:              "1234567",
+  password_confirmation: "1234567",
+  admin:     true,
+  activated: true,
+  activated_at: Time.zone.now)
 
 # 追加のユーザーをまとめて生成する
 # 30.times do |n|
@@ -29,16 +29,16 @@
 # end
 
 # タグ生成
-Tag.create([
-  { name: 'トップス' },
-  { name: 'アウター' },
-  { name: 'パンツ'},
-  { name: 'バッグ'},
-  { name: 'シューズ'},
-  { name: '帽子'},
-  { name: 'アクセサリ'},
-  { name: 'その他'},
-  ])
+# Tag.create([
+#   { name: 'トップス' },
+#   { name: 'アウター' },
+#   { name: 'パンツ'},
+#   { name: 'バッグ'},
+#   { name: 'シューズ'},
+#   { name: '帽子'},
+#   { name: 'アクセサリ'},
+#   { name: 'その他'},
+#   ])
 
 # ユーザーフォローのリレーションシップを作成する
 # users = User.all

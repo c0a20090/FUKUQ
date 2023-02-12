@@ -100,6 +100,11 @@ RSpec.describe "Questions", type: :system do
       expect(page).to have_selector '.pagination'
     end
 
+    it '検索窓があること' do
+      visit questions_path
+      expect(page).to have_selector '.question_search'
+    end
+
     context '有効な送信の場合' do
 
       it '投稿されること' do

@@ -4,7 +4,7 @@ class StaticPagesController < ApplicationController
       @question   = current_user.questions.build
       @q = current_user.feed.ransack(params[:q])
       @feed_items = @q.result.page(params[:page])
-      @url = r
+      @url = root_url
     end
   end
 
