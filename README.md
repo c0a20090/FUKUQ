@@ -47,8 +47,9 @@ https://fukuq.onrender.com/
 | 9 |Twitterシェア機能 | 無 |
 | 10 |ページネーション機能 | kaminari |
 | 11 |レスポンシブ対応 | Bootstrap |
-| 12 |単体・統合テスト | RSpec |
-| 13 |デプロイ | Render.com |
+| 12 |コード解析 | Rubocop |
+| 13 |単体・統合テスト | RSpec |
+| 14 |デプロイ | Render.com |
 
 ## 開発環境
 
