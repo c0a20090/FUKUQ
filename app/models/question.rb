@@ -15,4 +15,8 @@ class Question < ApplicationRecord
                                       message: "有効な画像形式でなければなりません" },
                       size:         { less_than: 5.megabytes,
                                       message:   "5MB未満である必要があります" }
+  
+  def self.ransackable_attributes(auth_object = nil)
+    ["content", "created_at", "id", "title", "updated_at", "user_id"]
+  end
 end
